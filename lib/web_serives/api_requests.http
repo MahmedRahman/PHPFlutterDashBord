@@ -1,0 +1,178 @@
+
+
+curl --silent --location 'https://sd-auth.tasksa.dev/api/auth/register' \
+--header 'X-country-code: 01' \
+--header 'lang: en' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "first_name": "mahmoud esmail",
+    "last_name": "erfan",
+    "phone": "+966508165257",
+    "email" : "mahmnoudesmail@gmail.com"
+}'
+###
+
+curl --silent --location 'https://sd-auth.tasksa.dev/api/auth/login' \
+--header 'Accept: application/json' \
+--header 'X-country-code: 02' \
+--header 'lang: en' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--data '{
+    "phone": "+966508165200",
+    "email" : null,
+    "code": 1234
+}'
+###
+
+POST /api/auth/login HTTP/1.1
+Host: auth.saudidates.sa
+Accept: application/json
+X-country-code: 02
+lang: en
+Accept: application/json
+Content-Type: application/json
+Content-Length: 70
+
+{
+    "phone": "+966508165200",
+    "email" : null,
+    "code": 1234
+}
+###
+//=============================================================>
+//=============================================================>
+GET https://sd-auth.tasksa.dev/api/categories/home HTTP/1.1
+Host: sd-auth.tasksa.dev
+X-country-code: sa
+lang: ar
+
+###
+
+//=============================================================>
+//=============================================================>
+GET https://sd-auth.tasksa.dev/api/order/my-orders HTTP/1.1
+Host: sd-auth.tasksa.dev
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NkLWF1dGgudGFza3NhLmRldi9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTcwNzA0NTMxMCwiZXhwIjoxNzA3NjUwMTEwLCJuYmYiOjE3MDcwNDUzMTAsImp0aSI6IkNLQlhUdk4wSEhNT0x4b1MiLCJzdWIiOiIzNTgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KBLBshqEIbIIPeFBcOQY8gV5NwhwGrQhamz2_grQkqY
+X-country-code: sa
+lang: ar
+
+###
+//=============================================================>
+//=============================================================>
+GET https://sd-auth.tasksa.dev/api/order/order-deatails/437 HTTP/1.1
+Host: sd-auth.tasksa.dev
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NkLWF1dGgudGFza3NhLmRldi9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTcwNzA0NTMxMCwiZXhwIjoxNzA3NjUwMTEwLCJuYmYiOjE3MDcwNDUzMTAsImp0aSI6IkNLQlhUdk4wSEhNT0x4b1MiLCJzdWIiOiIzNTgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KBLBshqEIbIIPeFBcOQY8gV5NwhwGrQhamz2_grQkqY
+X-country-code: sa
+Accept: application/json
+lang: ar
+
+###
+
+//=============================================================>
+//=============================================================>
+
+GET https://sd-auth.tasksa.dev/api/address HTTP/1.1
+Host: sd-auth.tasksa.dev
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NkLWF1dGgudGFza3NhLmRldi9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTcwNzA0NTMxMCwiZXhwIjoxNzA3NjUwMTEwLCJuYmYiOjE3MDcwNDUzMTAsImp0aSI6IkNLQlhUdk4wSEhNT0x4b1MiLCJzdWIiOiIzNTgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KBLBshqEIbIIPeFBcOQY8gV5NwhwGrQhamz2_grQkqY
+X-country-code: sa
+Accept: application/json
+lang: ar
+
+###
+//=============================================================>
+//=============================================================>
+
+GET https://sd-auth.tasksa.dev/api/address/geo-data HTTP/1.1
+Host: sd-auth.tasksa.dev
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NkLWF1dGgudGFza3NhLmRldi9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTcwNzA0NTMxMCwiZXhwIjoxNzA3NjUwMTEwLCJuYmYiOjE3MDcwNDUzMTAsImp0aSI6IkNLQlhUdk4wSEhNT0x4b1MiLCJzdWIiOiIzNTgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KBLBshqEIbIIPeFBcOQY8gV5NwhwGrQhamz2_grQkqY
+X-country-code: sa
+Accept: application/json
+lang: ar
+
+###
+
+//=============================================================>
+//=============================================================>
+
+GET https://sd-auth.tasksa.dev/api/address/show/294 HTTP/1.1
+Host: sd-auth.tasksa.dev
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NkLWF1dGgudGFza3NhLmRldi9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTcwNzA0NTMxMCwiZXhwIjoxNzA3NjUwMTEwLCJuYmYiOjE3MDcwNDUzMTAsImp0aSI6IkNLQlhUdk4wSEhNT0x4b1MiLCJzdWIiOiIzNTgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KBLBshqEIbIIPeFBcOQY8gV5NwhwGrQhamz2_grQkqY
+X-country-code: sa
+Accept: application/json
+lang: ar
+
+###
+
+//=============================================================>
+//=============================================================>
+
+GET https://sd-auth.tasksa.dev/api/address/set-default/294 HTTP/1.1
+Host: sd-auth.tasksa.dev
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NkLWF1dGgudGFza3NhLmRldi9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTcwNzA0NTMxMCwiZXhwIjoxNzA3NjUwMTEwLCJuYmYiOjE3MDcwNDUzMTAsImp0aSI6IkNLQlhUdk4wSEhNT0x4b1MiLCJzdWIiOiIzNTgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KBLBshqEIbIIPeFBcOQY8gV5NwhwGrQhamz2_grQkqY
+X-country-code: sa
+Accept: application/json
+lang: ar
+
+###
+
+//=============================================================>
+//=============================================================>
+
+GET https://sd-auth.tasksa.dev/api/address/store HTTP/1.1
+Host: sd-auth.tasksa.dev
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NkLWF1dGgudGFza3NhLmRldi9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTcwNzA0NTMxMCwiZXhwIjoxNzA3NjUwMTEwLCJuYmYiOjE3MDcwNDUzMTAsImp0aSI6IkNLQlhUdk4wSEhNT0x4b1MiLCJzdWIiOiIzNTgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KBLBshqEIbIIPeFBcOQY8gV5NwhwGrQhamz2_grQkqY
+X-country-code: sa
+Accept: application/json
+lang: ar
+
+{
+    "first_name": "Ahmed",
+    "last_name": "Hesham",
+    "description": "KSA address",
+    "type": "home",
+    "is_default": "0",
+    "phone": "+201234567890",
+    "country_id": "2",
+    "area_id": "4",
+    "city_id": "10",
+    "postal_code": "AD123"
+}
+
+###
+//=============================================================>
+//=============================================================>
+
+GET https://sd-auth.tasksa.dev/api/address/update HTTP/1.1
+Host: sd-auth.tasksa.dev
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NkLWF1dGgudGFza3NhLmRldi9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTcwNzA0NTMxMCwiZXhwIjoxNzA3NjUwMTEwLCJuYmYiOjE3MDcwNDUzMTAsImp0aSI6IkNLQlhUdk4wSEhNT0x4b1MiLCJzdWIiOiIzNTgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KBLBshqEIbIIPeFBcOQY8gV5NwhwGrQhamz2_grQkqY
+X-country-code: sa
+Accept: application/json
+lang: ar
+
+{
+    "first_name": "Ahmed",
+    "last_name": "Hesham",
+    "description": "KSA address",
+    "type": "home",
+    "is_default": "0",
+    "phone": "+201234567890",
+    "country_id": "2",
+    "area_id": "4",
+    "city_id": "10",
+    "postal_code": "AD123"
+}
+
+###
+
+//=============================================================>
+//=============================================================>
+
+GET https://sd-auth.tasksa.dev/api/address/delete/:address-id HTTP/1.1
+Host: sd-auth.tasksa.dev
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3NkLWF1dGgudGFza3NhLmRldi9hcGkvYXV0aC9sb2dpbiIsImlhdCI6MTcwNzA0NTMxMCwiZXhwIjoxNzA3NjUwMTEwLCJuYmYiOjE3MDcwNDUzMTAsImp0aSI6IkNLQlhUdk4wSEhNT0x4b1MiLCJzdWIiOiIzNTgiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.KBLBshqEIbIIPeFBcOQY8gV5NwhwGrQhamz2_grQkqY
+X-country-code: sa
+Accept: application/json
+lang: ar
+
+###
