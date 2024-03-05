@@ -1,9 +1,11 @@
+import 'package:dashbord/common/service.lookup_data_service.dart';
 import 'package:dashbord/components/components.button.dart';
 import 'package:dashbord/components/components.Input_date_picker.dart';
 import 'package:dashbord/components/components.drop_down_form_field.dart';
 import 'package:dashbord/components/components.form_field.dart';
 import 'package:dashbord/generic/app_input_config.dart';
 import 'package:dashbord/generic/app_input_validator.dart';
+import 'package:dashbord/main.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -26,12 +28,12 @@ class UsersAddView extends GetView<UsersAddController> {
                 child: Column(
                   children: [
                     AppTextFormField(
-                      controller: controller.name,
+                      controller: controller.employeeNo,
                       hintText: 'Employee No',
                       label: "Employee No",
                       validator: APPInputValidator.validateFirstName,
                       onChanged: (data) {
-                        controller.name.text = data.toString();
+                        controller.employeeNo.text = data.toString();
                       },
                     ),
                     SizedBox(
@@ -122,62 +124,43 @@ class UsersAddView extends GetView<UsersAddController> {
                     AppDropdownFormField(
                       hintText: 'Department',
                       label: "Department",
-                      itemsValues: "Engineering",
-                      items: [
-                        DropdownMenuItem(
-                          child: Text("Engineering"),
-                          value: "Engineering",
-                        ),
-                        DropdownMenuItem(
-                          child: Text("Sales and Marketing"),
-                          value: "Sales and Marketing",
-                        ),
-                        DropdownMenuItem(
-                          child: Text("Human Resources"),
-                          value: "Human Resources",
-                        ),
-                      ],
+                      items: List.generate(
+                        Get.find<LookupTableService>().departmentsList.length,
+                        (index) {
+                          return DropdownMenuItem(
+                            value: "${Get.find<LookupTableService>().departmentsList.elementAt(index)["id"]}",
+                            child: Text("${Get.find<LookupTableService>().departmentsList.elementAt(index)["title"]}"),
+                          );
+                        },
+                      ),
                       onChanged: (data) {
-                        controller.isActive.text = data!.toString();
+                        controller.departmentID.text = data!.toString();
                       },
+                      validator: APPInputValidator.validateRequired,
                     ),
+                
                     SizedBox(
                       height: 19,
                     ),
                     AppDropdownFormField(
-                      hintText: 'Job Title',
-                      label: "Job Title",
-                      itemsValues: "Front-end Developer",
-                      items: [
-                        DropdownMenuItem(
-                          child: Text("Front-end Developer"),
-                          value: "Front-end Developer",
+                        hintText: 'Job Title',
+                        label: "Job Title",
+                        validator: APPInputValidator.validateRequired,
+                        onChanged: (data) {
+                          controller.jobTitlesID.text = data!.toString();
+                        },
+                        items: List.generate(
+                          Get.find<LookupTableService>().jobTitlesList.length,
+                          (index) {
+                            return DropdownMenuItem(
+                              value: "${Get.find<LookupTableService>().jobTitlesList.elementAt(index)["id"]}",
+                              child: Text("${Get.find<LookupTableService>().jobTitlesList.elementAt(index)["title"]}"),
+                            );
+                          },
+                        )
+
+                       
                         ),
-                        DropdownMenuItem(
-                          child: Text("Back-end Developer"),
-                          value: "Back-end Developer",
-                        ),
-                        DropdownMenuItem(
-                          child: Text("Mobile Developer"),
-                          value: "Mobile Developer",
-                        ),
-                        DropdownMenuItem(
-                          child: Text("UX/UI Designer"),
-                          value: "UX/UI Designer",
-                        ),
-                        DropdownMenuItem(
-                          child: Text("HR Manager"),
-                          value: "HR Manager",
-                        ),
-                        DropdownMenuItem(
-                          child: Text("Operations Manager"),
-                          value: "Operations Manager",
-                        ),
-                      ],
-                      onChanged: (data) {
-                        controller.isActive.text = data!.toString();
-                      },
-                    ),
                     SizedBox(
                       height: 19,
                     ),

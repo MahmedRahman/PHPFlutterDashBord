@@ -36,4 +36,5 @@ class UsersListController extends GetxController with StateMixin<List> {
       },
     );
   }
+
 }

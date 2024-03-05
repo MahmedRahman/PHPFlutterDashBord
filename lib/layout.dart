@@ -41,9 +41,8 @@ class LayoutTemplate extends GetView {
                             ),
                           ),
                         ),
-                        //Divider(),
                         ListTile(
-                          leading: Icon(Icons.abc),
+                          leading: Icon(Icons.home),
                           title: Text("Home"),
                           onTap: () {
                             Get.offAllNamed("/home");
@@ -51,25 +50,80 @@ class LayoutTemplate extends GetView {
                         ),
                         Divider(),
                         ListTile(
-                          leading: Icon(Icons.abc),
-                          title: Text("users"),
+                          leading: Icon(Icons.list),
+                          title: Text("users List"),
                           onTap: () {
                             Get.offAllNamed('/users');
                           },
                         ),
                         ListTile(
-                          leading: Icon(Icons.abc),
-                          title: Text("Add"),
+                          leading: Icon(Icons.add),
+                          title: Text("users Add"),
                           onTap: () {
                             Get.offAllNamed('/users/add');
                           },
                         ),
                         Divider(),
+                        ListTile(
+                          leading: Icon(Icons.list),
+                          title: Text("Department List"),
+                          onTap: () {
+                            Get.offAllNamed('/departments');
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.add),
+                          title: Text("Department Add"),
+                          onTap: () {
+                            Get.offAllNamed('/departments/add');
+                          },
+                        ),
+                        Divider(),
+                        ListTile(
+                          leading: Icon(Icons.list),
+                          title: Text("Job Title List"),
+                          onTap: () {
+                            Get.offAllNamed('/jobTitles');
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.add),
+                          title: Text("Job Title Add"),
+                          onTap: () {
+                            Get.offAllNamed('/jobTitles/add');
+                          },
+                        ),
+                        Divider(),
+                        ListTile(
+                          leading: Icon(Icons.list),
+                          title: Text("Vacation List"),
+                          onTap: () {
+                            Get.offAllNamed('/vacation');
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.add),
+                          title: Text("Vacation Add"),
+                          onTap: () {
+                            Get.offAllNamed('/vacation/add');
+                          },
+                        ),
+                        Divider(),
+                        ListTile(
+                          leading: Icon(Icons.list),
+                          title: Text("Excuses List"),
+                          onTap: () {
+                            Get.offAllNamed('/excuses');
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(Icons.add),
+                          title: Text("Excuses Add"),
+                          onTap: () {
+                            Get.offAllNamed('/excuses/add');
+                          },
+                        ),
                         Spacer(),
-                        // SizedBox(
-                        //   height: 60,
-                        //   child: Center(child: Text("data")),
-                        // ),
                       ],
                     ),
                   ),
@@ -78,6 +132,7 @@ class LayoutTemplate extends GetView {
                       children: [
                         Container(
                           height: 60,
+                          width: Get.width,
                           color: Colors.blue,
                           child: Row(
                             children: [

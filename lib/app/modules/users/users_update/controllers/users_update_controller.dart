@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UsersUpdateController extends GetxController with StateMixin {
+  TextEditingController employeeNo = TextEditingController(text: "101");
+
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -14,26 +16,29 @@ class UsersUpdateController extends GetxController with StateMixin {
   TextEditingController isActive = TextEditingController();
   TextEditingController role = TextEditingController();
   TextEditingController joinDate = TextEditingController();
+  TextEditingController departmentID = TextEditingController();
+  TextEditingController jobTitlesID = TextEditingController();
+
   final formkey = GlobalKey<FormState>();
 
   @override
   void onInit() {
     super.onInit();
-    getUser(Get.parameters["id"].toString());
+    getUser(Get.arguments);
   }
 
-  void getUser(userID) async {
+  void getUser(user) async {
     try {
-      ResponseModel responseModel = await WebServices().getUser(userID.toString());
-
-      name.text = responseModel.data["data"]["name"].toString();
-      email.text = responseModel.data["data"]["email"].toString();
-      vacationDays.text = responseModel.data["data"]["vacation_days"].toString();
-      isActive.text = responseModel.data["data"]["is_active"].toString();
-      role.text = responseModel.data["data"]["role"].toString();
-      joinDate.text = responseModel.data["data"]["join_date"].toString();
-
-      change(responseModel.data["data"], status: RxStatus.success());
+      employeeNo.text = user["emp_no"].toString();
+      name.text = user["name"].toString();
+      email.text = user["email"].toString();
+      vacationDays.text = user["vacation_days"].toString();
+      isActive.text = user["is_active"].toString();
+      role.text = user["role"].toString();
+      joinDate.text = user["join_date"].toString();
+      departmentID.text = user["department_id"].toString();
+      jobTitlesID.text = user["job_titles_id"].toString();
+      change(user, status: RxStatus.success());
     } catch (e) {
       APPSnackbar.showMessageFailure(message: e.toString());
     }
@@ -55,6 +60,8 @@ class UsersUpdateController extends GetxController with StateMixin {
         role: role.text,
         joinDate: joinDate.text.split(" ").first,
         vacationDays: int.parse(vacationDays.text.toString()),
+        department_id: departmentID.text.toString(),
+        job_titles_id: jobTitlesID.text.toString(),
       );
       APPSnackbar.showMessageSuccess(message: responseModel.data["message"].toString());
       Get.find<UsersListController>().getUsers();

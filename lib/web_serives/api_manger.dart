@@ -91,7 +91,11 @@ class ApiManger extends GetConnect {
         "\x1B[31m [${HTTPRequestMethod.name}] [${response!.statusCode.toString()}] ${url}\x1B[31m",
         name: "http-error",
       );
-
+      //printError(response!.body.toString());
+      log(
+        "\x1B[31m ${response.body.toString()}\x1B[31m",
+        name: "http-error",
+      );
       rethrow;
     }
 

@@ -75,6 +75,7 @@ class UsersListView extends GetView<UsersListController> {
                             onPressed: () {
                               Get.toNamed(
                                 '/users/update?id=${snapshot[index]["id"].toString()}',
+                                arguments: snapshot[index],
                               );
                             },
                             icon: Icon(Icons.edit),
@@ -83,6 +84,7 @@ class UsersListView extends GetView<UsersListController> {
                             onPressed: () {
                               Get.toNamed(
                                 '/users/show?id=${snapshot[index]["id"].toString()}',
+                                arguments: snapshot[index],
                               );
                             },
                             icon: Icon(Icons.view_agenda),
@@ -100,3 +102,51 @@ class UsersListView extends GetView<UsersListController> {
     );
   }
 }
+
+
+
+ //  [
+          //   DataCell(
+          //     Text(data[index]["id"].toString()),
+          //   ),
+          //   DataCell(
+          //     Text(data[index]["name"].toString()),
+          //   ),
+          //   DataCell(
+          //     Text(data[index]["email"].toString()),
+          //   ),
+          //   DataCell(
+          //     Text(data[index]["role"].toString()),
+          //   ),
+          //   DataCell(
+          //     Text(data[index]["vacation_days"].toString()),
+          //   ),
+          //   // DataCell(Row(
+          //   //   children: [
+          //   //     IconButton(
+          //   //       onPressed: () {
+          //   //         controller.deleteUser(snapshot[index]["id"].toString());
+          //   //       },
+          //   //       icon: Icon(Icons.delete),
+          //   //     ),
+          //   //     IconButton(
+          //   //       onPressed: () {
+          //   //         Get.toNamed(
+          //   //           '/users/update?id=${snapshot[index]["id"].toString()}',
+          //   //         );
+          //   //       },
+          //   //       icon: Icon(Icons.edit),
+          //   //     ),
+          //   //     IconButton(
+          //   //       onPressed: () {
+          //   //         Get.toNamed(
+          //   //           '/users/show?id=${snapshot[index]["id"].toString()}',
+          //   //           arguments: snapshot[index],
+          //   //         );
+          //   //       },
+          //   //       icon: Icon(Icons.view_agenda),
+          //   //     ),
+          //   //   ],
+          //   // )),
+
+          // ],

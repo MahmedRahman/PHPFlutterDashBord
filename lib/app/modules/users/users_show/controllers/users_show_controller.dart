@@ -5,17 +5,18 @@ import 'package:get/get.dart';
 
 class UsersShowController extends GetxController with StateMixin {
   final count = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
-    getUser(Get.parameters["id"].toString());
+    getUser(Get.arguments);
   }
 
-  void getUser(userID) async {
+  void getUser(user) async {
     try {
-      ResponseModel responseModel = await WebServices().getUser(userID.toString());
+     // ResponseModel responseModel = await WebServices().getUser(userID.toString());
 
-      change(responseModel.data["data"], status: RxStatus.success());
+      change(user, status: RxStatus.success());
     } catch (e) {
       APPSnackbar.showMessageFailure(message: e.toString());
     }

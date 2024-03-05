@@ -8,7 +8,10 @@ import 'package:dashbord/web_serives/web_services.api.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+
+
 class UsersAddController extends GetxController with StateMixin {
+  TextEditingController employeeNo = TextEditingController(text: "101");
   TextEditingController name = TextEditingController(text: "Mohamed");
   TextEditingController email = TextEditingController(text: "atpfreelance@gmail.com");
   TextEditingController password = TextEditingController(text: "atp@5797895");
@@ -16,12 +19,17 @@ class UsersAddController extends GetxController with StateMixin {
   TextEditingController isActive = TextEditingController(text: "true");
   TextEditingController role = TextEditingController(text: "employee");
   TextEditingController joinDate = TextEditingController(text: DateTime.now().toString());
+  TextEditingController departmentID = TextEditingController(text: "1");
+  TextEditingController jobTitlesID = TextEditingController(text: "1");
   final formkey = GlobalKey<FormState>();
   @override
   void onInit() {
+  
     change(null, status: RxStatus.success());
     super.onInit();
   }
+
+  
 
   void onPressedRegisterButton() async {
     formkey!.currentState!.save();
@@ -32,6 +40,7 @@ class UsersAddController extends GetxController with StateMixin {
     change(null, status: RxStatus.loading());
     try {
       ResponseModel responseModel = await WebServices().addUser(
+        employee_no: employeeNo.text,
         name: name.text,
         email: email.text,
         password: password.text,
@@ -39,6 +48,8 @@ class UsersAddController extends GetxController with StateMixin {
         role: role.text,
         joinDate: joinDate.text.split(" ").first,
         vacationDays: int.parse(vacationDays.text.toString()),
+        department_id: departmentID.text,
+        job_titles_id: jobTitlesID.text,
       );
       APPSnackbar.showMessageSuccess(message: responseModel.data["message"].toString());
 

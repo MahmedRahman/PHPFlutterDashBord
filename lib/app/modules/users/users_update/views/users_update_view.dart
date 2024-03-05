@@ -1,9 +1,11 @@
+import 'package:dashbord/common/service.lookup_data_service.dart';
 import 'package:dashbord/components/components.button.dart';
 import 'package:dashbord/components/components.Input_date_picker.dart';
 import 'package:dashbord/components/components.drop_down_form_field.dart';
 import 'package:dashbord/components/components.form_field.dart';
 import 'package:dashbord/generic/app_input_config.dart';
 import 'package:dashbord/generic/app_input_validator.dart';
+import 'package:dashbord/main.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -41,21 +43,6 @@ class UsersUpdateView extends GetView<UsersUpdateController> {
                     SizedBox(
                       height: 19,
                     ),
-                    AppTextFormField(
-                      controller: controller.email,
-                      hintText: 'Email',
-                      label: "Email",
-                      validator: APPInputValidator.validateEmail,
-                      onChanged: (data) {
-                        controller.email.text = data.toString();
-                      },
-                    ),
-                    SizedBox(
-                      height: 19,
-                    ),
-                    SizedBox(
-                      height: 19,
-                    ),
                     AppDropdownFormField(
                       hintText: 'role',
                       label: "Role",
@@ -77,6 +64,48 @@ class UsersUpdateView extends GetView<UsersUpdateController> {
                       onChanged: (data) {
                         controller.role.text = data!.toString();
                       },
+                    ),
+                    SizedBox(
+                      height: 19,
+                    ),
+                    AppDropdownFormField(
+                      hintText: 'Department',
+                      label: "Department",
+                      itemsValues: controller.departmentID.text.toString(),
+                      validator: APPInputValidator.validateRequired,
+                      items: List.generate(
+                        Get.find<LookupTableService>().departmentsList.length,
+                        (index) {
+                          return DropdownMenuItem(
+                            value: "${Get.find<LookupTableService>().departmentsList.elementAt(index)["id"]}",
+                            child: Text("${Get.find<LookupTableService>().departmentsList.elementAt(index)["title"]}"),
+                          );
+                        },
+                      ),
+                      onChanged: (data) {
+                        controller.departmentID.text = data!.toString();
+                      },
+                    ),
+                    SizedBox(
+                      height: 19,
+                    ),
+                    AppDropdownFormField(
+                      hintText: 'Job Title',
+                      label: "Job Title",
+                      validator: APPInputValidator.validateRequired,
+                      itemsValues: controller.jobTitlesID.text.toString(),
+                      onChanged: (data) {
+                        controller.jobTitlesID.text = data!.toString();
+                      },
+                      items: List.generate(
+                        Get.find<LookupTableService>().jobTitlesList.length,
+                        (index) {
+                          return DropdownMenuItem(
+                            value: "${Get.find<LookupTableService>().jobTitlesList.elementAt(index)["id"]}",
+                            child: Text("${Get.find<LookupTableService>().jobTitlesList.elementAt(index)["title"]}"),
+                          );
+                        },
+                      ),
                     ),
                     SizedBox(
                       height: 19,

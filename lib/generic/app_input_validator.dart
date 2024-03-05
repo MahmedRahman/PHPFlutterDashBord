@@ -52,6 +52,13 @@ class APPInputValidator {
     return null;
   }
 
+  static String? validateRequired(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter Data';
+    }
+    return null;
+  }
+
   static String? validateEmailOrPhone(String? value) {
     final emailRegex = RegExp(r'^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
     final phoneRegex = RegExp(r'^(?:[+0]9)?[0-9]{10}$'); // This pattern can be adjusted as needed
