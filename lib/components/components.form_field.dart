@@ -44,7 +44,11 @@ class AppTextFormField extends StatelessWidget {
           autofillHints: autofillHints,
           inputFormatters: inputFormatters,
           keyboardType: keyboardType,
-          onChanged: onChanged,
+          //onChanged: onChanged,
+          //onSaved: onChanged,
+          onSaved: (newValue) {
+            onChanged!(newValue!);
+          },
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
             floatingLabelBehavior: FloatingLabelBehavior.always,

@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LayoutTemplate extends GetView {
   LayoutTemplate({this.child});
@@ -173,7 +174,10 @@ class LayoutTemplate extends GetView {
                           leading: Icon(Icons.logout),
                           title: Text("LogOut"),
                           onTap: () {
-                            //Get.offAllNamed('/excuses/add');
+                            final box = GetStorage();
+                            box.remove('token');
+
+                            Get.offAllNamed(Routes.LOGIN);
                           },
                         ),
                         SizedBox(

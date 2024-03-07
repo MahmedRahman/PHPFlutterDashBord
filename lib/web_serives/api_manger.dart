@@ -1,9 +1,11 @@
 import 'dart:developer';
+import 'package:dashbord/app/routes/app_pages.dart';
 import 'package:dashbord/common/service.auth.dart';
 import 'package:dashbord/web_serives/exception.dart';
 import 'package:dashbord/web_serives/model/api_response_model.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/request/request.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ApiManger extends GetConnect {
   ApiManger() {
@@ -24,6 +26,17 @@ class ApiManger extends GetConnect {
     dynamic query,
     bool isAuth = false,
   }) async {
+    if (isAuth) {
+      final box = GetStorage();
+
+      // Check if 'token' key exists in the box
+      if (box.hasData('token')) {
+        Get.find<AuthService>().token = box.read('token');
+      } else {
+        Get.offAndToNamed(Routes.LOGIN);
+      }
+    }
+
     log("[${HTTPRequestMethod.name}]  ${url}", name: "http-request");
 
     Response? response;
@@ -75,6 +88,10 @@ class ApiManger extends GetConnect {
           "\x1B[31m [${HTTPRequestMethod.name}] [${response.statusCode.toString()}] ${url}\x1B[31m",
           name: "http-error",
         );
+
+        if (response.statusCode == 401) {
+          Get.offAndToNamed(Routes.LOGIN);
+        }
         if (response.statusCode == 400 ||
             response.statusCode == 422 ||
             response.statusCode == 406 ||

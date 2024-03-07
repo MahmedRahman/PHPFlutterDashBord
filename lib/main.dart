@@ -4,11 +4,13 @@ import 'package:dashbord/web_serives/model/api_response_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'app/routes/app_pages.dart';
 import 'web_serives/web_services.dart';
 
 void main() async {
+  await GetStorage.init();
   Get.put(AuthService());
   Get.put(LookupTableService());
   runApp(

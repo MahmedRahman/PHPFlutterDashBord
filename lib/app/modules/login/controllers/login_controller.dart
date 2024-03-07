@@ -7,6 +7,7 @@ import 'package:dashbord/web_serives/model/api_response_model.dart';
 import 'package:dashbord/web_serives/web_services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LoginController extends GetxController with StateMixin {
   TextEditingController email = TextEditingController(text: "admin@admin.com");
@@ -41,6 +42,10 @@ class LoginController extends GetxController with StateMixin {
       }
       Get.find<AuthService>().token = responseModel.data["data"]["access_token"].toString();
       //print(Get.find<AuthService>().token);
+      final box = GetStorage();
+
+      box.write('token', '${responseModel.data["data"]["access_token"].toString()}');
+
       Get.offAllNamed(Routes.HOME);
       change(null, status: RxStatus.success());
     } on BadRequestException catch (e) {

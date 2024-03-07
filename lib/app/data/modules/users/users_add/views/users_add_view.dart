@@ -1,3 +1,4 @@
+import 'package:dashbord/app/modules/users/users_add/controllers/users_add_controller.dart';
 import 'package:dashbord/common/service.lookup_data_service.dart';
 import 'package:dashbord/components/components.button.dart';
 import 'package:dashbord/components/components.Input_date_picker.dart';
@@ -10,8 +11,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
-import '../controllers/users_add_controller.dart';
 
 class UsersAddView extends GetView<UsersAddController> {
   const UsersAddView({Key? key}) : super(key: key);
