@@ -1,23 +1,20 @@
+import 'package:dashbord/generic/app_SnackBar.dart';
 import 'package:get/get.dart';
 
-class VacationShowController extends GetxController {
+class VacationShowController extends GetxController with StateMixin {
   //TODO: Implement VacationShowController
 
-  final count = 0.obs;
   @override
   void onInit() {
+    getVacation(Get.arguments);
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void getVacation(vacation) async {
+    try {
+      change(vacation, status: RxStatus.success());
+    } catch (e) {
+      APPSnackbar.showMessageFailure(message: e.toString());
+    }
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

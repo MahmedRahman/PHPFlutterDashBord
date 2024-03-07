@@ -54,6 +54,7 @@ class UsersUpdateController extends GetxController with StateMixin {
     try {
       ResponseModel responseModel = await WebServices().updateUser(
         userId: Get.parameters["id"].toString(),
+        employee_no: employeeNo.text,
         name: name.text,
         email: email.text,
         isActive: bool.parse(isActive.text.toString()),
@@ -64,9 +65,9 @@ class UsersUpdateController extends GetxController with StateMixin {
         job_titles_id: jobTitlesID.text.toString(),
       );
       APPSnackbar.showMessageSuccess(message: responseModel.data["message"].toString());
-      Get.find<UsersListController>().getUsers();
 
       change(null, status: RxStatus.success());
+      Get.offAllNamed("/users");
     } on BadRequestException catch (e) {
       APPSnackbar.showMessageFailure(message: e.message.toString());
       change(null, status: RxStatus.success());

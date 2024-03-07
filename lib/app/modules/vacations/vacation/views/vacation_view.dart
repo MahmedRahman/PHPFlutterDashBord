@@ -1,3 +1,4 @@
+import 'package:dashbord/app_empty.dart';
 import 'package:dashbord/components/components.base_data_table.dart';
 import '../controllers/vacation_controller.dart';
 import 'package:flutter/material.dart';
@@ -12,20 +13,20 @@ class VacationView extends GetView<VacationController> {
         (snapshot) {
           return BaseDataTable(
             columnsName: [
-              "id",
-              "user_name",
-              "create_date",
-              "starting",
-              "ending",
-              "days",
-              "type",
+              "ID",
+              "Create Date",
+              "Name",
+              "Start",
+              "End",
+              "Days",
+              "Type",
               "state",
               "Action",
             ],
             rowsName: [
               "id",
-              "user_name",
               "create_date",
+              "user_name",
               "starting",
               "ending",
               "days",
@@ -37,8 +38,23 @@ class VacationView extends GetView<VacationController> {
             onDeletePressed: (selectItem) {
               controller.deleteVacation(selectItem["id"]);
             },
+            onUpdatePressed: (selectItem) {
+              Get.toNamed(
+                '/vacation/update?id=${selectItem["id"].toString()}',
+                arguments: selectItem,
+              );
+            },
+            onShowPressed: (selectItem) {
+              Get.toNamed(
+                '/vacation/show?id=${selectItem["id"].toString()}',
+                arguments: selectItem,
+              );
+            },
           );
         },
+        onEmpty: APPEmptyPage(
+          title: "No Data Found.",
+        ),
       ),
     );
   }

@@ -26,7 +26,7 @@ class DepartmentAddController extends GetxController with StateMixin {
       ResponseModel responseModel = await WebServices().addDepartments(title: title.text.toString());
 
       APPSnackbar.showMessageSuccess(message: responseModel.data["message"].toString());
-      Get.find<LookupTableService>().getDepartments();
+      Get.offAllNamed("/departments");
       change(null, status: RxStatus.success());
     } on BadRequestException catch (e) {
       APPSnackbar.showMessageFailure(message: e.message.toString());

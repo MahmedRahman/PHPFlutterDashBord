@@ -1,3 +1,4 @@
+import 'package:dashbord/app_empty.dart';
 import 'package:dashbord/components/components.base_data_table.dart';
 import 'package:flutter/material.dart';
 
@@ -15,23 +16,19 @@ class ExcuseView extends GetView<ExcuseController> {
           return BaseDataTable(
             columnsName: [
               "id",
-              "user_name",
-              "create_date",
-              "starting",
-              "ending",
-              "days",
-              "type",
+              "Date",
+              "Name",
+              "Start",
+              "End",
               "state",
               "Action",
             ],
             rowsName: [
               "id",
-              "user_name",
               "create_date",
-              "starting",
+              "user_name",
+              "stating",
               "ending",
-              "days",
-              "type",
               "state",
               "",
             ],
@@ -39,8 +36,17 @@ class ExcuseView extends GetView<ExcuseController> {
             onDeletePressed: (selectItem) {
               controller.deleteExcuses(selectItem["id"]);
             },
+            onUpdatePressed: (selectItem) {
+              Get.toNamed(
+                '/excuses/update?id=${selectItem["id"].toString()}',
+                arguments: selectItem,
+              );
+            },
           );
         },
+        onEmpty: APPEmptyPage(
+          title: "No Data Found",
+        ),
       ),
     );
   }

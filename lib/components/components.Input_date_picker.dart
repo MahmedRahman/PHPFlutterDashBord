@@ -38,7 +38,7 @@ class AppInputDatePickerFormField extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyles.font14Medium,
+          style: TextStyles.font14Medium.copyWith(fontWeight: FontWeight.bold),
         ),
         SizedBox(
           height: 10,

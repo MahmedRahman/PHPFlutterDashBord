@@ -1,3 +1,4 @@
+import 'package:dashbord/app_empty.dart';
 import 'package:dashbord/components/components.base_data_table.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,9 @@ class JobTitleView extends GetView<JobTitleController> {
             },
           );
         },
+        onEmpty: APPEmptyPage(
+          title: "No Job Titles Found!",
+        ),
       ),
     );
   }

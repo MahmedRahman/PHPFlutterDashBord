@@ -27,7 +27,7 @@ class JobTitleAddController extends GetxController with StateMixin {
       APPSnackbar.showMessageSuccess(
         message: responseModel.data["message"].toString(),
       );
-      Get.find<LookupTableService>().getJobTitles();
+      Get.offAllNamed('/jobTitles');
       change(null, status: RxStatus.success());
     } on BadRequestException catch (e) {
       APPSnackbar.showMessageFailure(message: e.message.toString());
@@ -38,7 +38,8 @@ class JobTitleAddController extends GetxController with StateMixin {
   }
 
   @override
-  void onInit() {
+  void onInit() async {
+    await Get.find<LookupTableService>().getDepartments();
     change(null, status: RxStatus.success());
     super.onInit();
   }

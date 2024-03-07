@@ -18,6 +18,7 @@ class UsersAddView extends GetView<UsersAddController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.white12,
       body: controller.obx(
         (snapshot) {
           return SingleChildScrollView(
@@ -124,6 +125,7 @@ class UsersAddView extends GetView<UsersAddController> {
                     AppDropdownFormField(
                       hintText: 'Department',
                       label: "Department",
+                      itemsValues: (controller.departmentID.text == "") ? null : controller.departmentID.text,
                       items: List.generate(
                         Get.find<LookupTableService>().departmentsList.length,
                         (index) {
@@ -138,13 +140,13 @@ class UsersAddView extends GetView<UsersAddController> {
                       },
                       validator: APPInputValidator.validateRequired,
                     ),
-                
                     SizedBox(
                       height: 19,
                     ),
                     AppDropdownFormField(
                         hintText: 'Job Title',
                         label: "Job Title",
+                        itemsValues: (controller.jobTitlesID.text == "") ? null : controller.jobTitlesID.text,
                         validator: APPInputValidator.validateRequired,
                         onChanged: (data) {
                           controller.jobTitlesID.text = data!.toString();
@@ -157,10 +159,7 @@ class UsersAddView extends GetView<UsersAddController> {
                               child: Text("${Get.find<LookupTableService>().jobTitlesList.elementAt(index)["title"]}"),
                             );
                           },
-                        )
-
-                       
-                        ),
+                        )),
                     SizedBox(
                       height: 19,
                     ),

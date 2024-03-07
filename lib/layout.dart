@@ -1,3 +1,14 @@
+import 'package:dashbord/app/modules/departments/department/views/department_view.dart';
+import 'package:dashbord/app/modules/departments/department_add/views/department_add_view.dart';
+import 'package:dashbord/app/modules/excuses/excuse/views/excuse_view.dart';
+import 'package:dashbord/app/modules/excuses/excuses_add/views/excuses_add_view.dart';
+import 'package:dashbord/app/modules/home/views/home_view.dart';
+import 'package:dashbord/app/modules/jobTitles/jobTitle/views/job_title_view.dart';
+import 'package:dashbord/app/modules/jobTitles/jobTitle_add/views/job_title_add_view.dart';
+import 'package:dashbord/app/modules/users/users/views/users_list_view.dart';
+import 'package:dashbord/app/modules/users/users_add/views/users_add_view.dart';
+import 'package:dashbord/app/modules/vacations/vacation/views/vacation_view.dart';
+import 'package:dashbord/app/modules/vacations/vacation_add/views/vacation_add_view.dart';
 import 'package:dashbord/app/routes/app_pages.dart';
 import 'package:dashbord/common_ui/common_ui.color.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +33,17 @@ class LayoutTemplate extends GetView {
                   Container(
                     width: 250,
                     height: Get.height,
-                    color: Colors.white,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5), // Shadow color with opacity
+                          spreadRadius: 5, // Spread radius
+                          blurRadius: 7, // Blur radius
+                          offset: Offset(0, 3), // Changes position of shadow
+                        ),
+                      ],
+                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,6 +64,8 @@ class LayoutTemplate extends GetView {
                         ),
                         ListTile(
                           leading: Icon(Icons.home),
+                          selected: child is HomeView,
+                          selectedColor: Colors.blue,
                           title: Text("Home"),
                           onTap: () {
                             Get.offAllNamed("/home");
@@ -50,6 +73,8 @@ class LayoutTemplate extends GetView {
                         ),
                         Divider(),
                         ListTile(
+                          selected: child is UsersListView,
+                          selectedColor: Colors.blue,
                           leading: Icon(Icons.list),
                           title: Text("users List"),
                           onTap: () {
@@ -57,6 +82,8 @@ class LayoutTemplate extends GetView {
                           },
                         ),
                         ListTile(
+                          selected: child is UsersAddView,
+                          selectedColor: Colors.blue,
                           leading: Icon(Icons.add),
                           title: Text("users Add"),
                           onTap: () {
@@ -65,6 +92,8 @@ class LayoutTemplate extends GetView {
                         ),
                         Divider(),
                         ListTile(
+                          selected: child is DepartmentView,
+                          selectedColor: Colors.blue,
                           leading: Icon(Icons.list),
                           title: Text("Department List"),
                           onTap: () {
@@ -72,6 +101,8 @@ class LayoutTemplate extends GetView {
                           },
                         ),
                         ListTile(
+                          selected: child is DepartmentAddView,
+                          selectedColor: Colors.blue,
                           leading: Icon(Icons.add),
                           title: Text("Department Add"),
                           onTap: () {
@@ -80,6 +111,8 @@ class LayoutTemplate extends GetView {
                         ),
                         Divider(),
                         ListTile(
+                          selected: child is JobTitleView,
+                          selectedColor: Colors.blue,
                           leading: Icon(Icons.list),
                           title: Text("Job Title List"),
                           onTap: () {
@@ -87,6 +120,8 @@ class LayoutTemplate extends GetView {
                           },
                         ),
                         ListTile(
+                          selected: child is JobTitleAddView,
+                          selectedColor: Colors.blue,
                           leading: Icon(Icons.add),
                           title: Text("Job Title Add"),
                           onTap: () {
@@ -95,6 +130,8 @@ class LayoutTemplate extends GetView {
                         ),
                         Divider(),
                         ListTile(
+                          selected: child is VacationView,
+                          selectedColor: Colors.blue,
                           leading: Icon(Icons.list),
                           title: Text("Vacation List"),
                           onTap: () {
@@ -102,6 +139,8 @@ class LayoutTemplate extends GetView {
                           },
                         ),
                         ListTile(
+                          selected: child is VacationAddView,
+                          selectedColor: Colors.blue,
                           leading: Icon(Icons.add),
                           title: Text("Vacation Add"),
                           onTap: () {
@@ -110,6 +149,8 @@ class LayoutTemplate extends GetView {
                         ),
                         Divider(),
                         ListTile(
+                          selected: child is ExcuseView,
+                          selectedColor: Colors.blue,
                           leading: Icon(Icons.list),
                           title: Text("Excuses List"),
                           onTap: () {
@@ -117,6 +158,8 @@ class LayoutTemplate extends GetView {
                           },
                         ),
                         ListTile(
+                          selected: child is ExcusesAddView,
+                          selectedColor: Colors.blue,
                           leading: Icon(Icons.add),
                           title: Text("Excuses Add"),
                           onTap: () {
@@ -124,6 +167,18 @@ class LayoutTemplate extends GetView {
                           },
                         ),
                         Spacer(),
+                        ListTile(
+                          selected: child is ExcusesAddView,
+                          selectedColor: Colors.blue,
+                          leading: Icon(Icons.logout),
+                          title: Text("LogOut"),
+                          onTap: () {
+                            //Get.offAllNamed('/excuses/add');
+                          },
+                        ),
+                        SizedBox(
+                          height: 5,
+                        )
                       ],
                     ),
                   ),
@@ -133,7 +188,17 @@ class LayoutTemplate extends GetView {
                         Container(
                           height: 60,
                           width: Get.width,
-                          color: Colors.blue,
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5), // Shadow color with opacity
+                                spreadRadius: 5, // Spread radius
+                                blurRadius: 7, // Blur radius
+                                offset: Offset(0, 3), // Changes position of shadow
+                              ),
+                            ],
+                          ),
                           child: Row(
                             children: [
                               SizedBox(
@@ -144,7 +209,7 @@ class LayoutTemplate extends GetView {
                         ),
                         Container(
                           height: Get.height - 60,
-                          color: Colors.orange,
+                          color: Colors.grey.shade300,
                           child: child,
                         ),
                       ],

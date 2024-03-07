@@ -18,10 +18,6 @@ class UsersUpdateView extends GetView<UsersUpdateController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('UsersUpdateView'),
-        centerTitle: true,
-      ),
       body: controller.obx(
         (snapshot) {
           return SingleChildScrollView(
@@ -31,6 +27,18 @@ class UsersUpdateView extends GetView<UsersUpdateController> {
                 key: controller.formkey,
                 child: Column(
                   children: [
+                    AppTextFormField(
+                      controller: controller.employeeNo,
+                      hintText: 'Employee No',
+                      label: "Employee No",
+                      validator: APPInputValidator.validateFirstName,
+                      onChanged: (data) {
+                        controller.employeeNo.text = data.toString();
+                      },
+                    ),
+                    SizedBox(
+                      height: 19,
+                    ),
                     AppTextFormField(
                       controller: controller.name,
                       hintText: 'Name',
@@ -71,7 +79,7 @@ class UsersUpdateView extends GetView<UsersUpdateController> {
                     AppDropdownFormField(
                       hintText: 'Department',
                       label: "Department",
-                      itemsValues: controller.departmentID.text.toString(),
+                      itemsValues: (controller.departmentID.text == "null") ? null : controller.departmentID.text,
                       validator: APPInputValidator.validateRequired,
                       items: List.generate(
                         Get.find<LookupTableService>().departmentsList.length,
@@ -93,7 +101,7 @@ class UsersUpdateView extends GetView<UsersUpdateController> {
                       hintText: 'Job Title',
                       label: "Job Title",
                       validator: APPInputValidator.validateRequired,
-                      itemsValues: controller.jobTitlesID.text.toString(),
+                      itemsValues: (controller.jobTitlesID.text == "null") ? null : controller.jobTitlesID.text,
                       onChanged: (data) {
                         controller.jobTitlesID.text = data!.toString();
                       },

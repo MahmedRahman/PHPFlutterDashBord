@@ -8,28 +8,24 @@ import 'package:dashbord/web_serives/web_services.api.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
-
 class UsersAddController extends GetxController with StateMixin {
-  TextEditingController employeeNo = TextEditingController(text: "101");
-  TextEditingController name = TextEditingController(text: "Mohamed");
-  TextEditingController email = TextEditingController(text: "atpfreelance@gmail.com");
-  TextEditingController password = TextEditingController(text: "atp@5797895");
+  TextEditingController employeeNo = TextEditingController(text: "0");
+  TextEditingController name = TextEditingController(text: "");
+  TextEditingController email = TextEditingController(text: "");
+  TextEditingController password = TextEditingController(text: "pass@123456");
   TextEditingController vacationDays = TextEditingController(text: "1");
   TextEditingController isActive = TextEditingController(text: "true");
   TextEditingController role = TextEditingController(text: "employee");
   TextEditingController joinDate = TextEditingController(text: DateTime.now().toString());
-  TextEditingController departmentID = TextEditingController(text: "1");
-  TextEditingController jobTitlesID = TextEditingController(text: "1");
+  TextEditingController departmentID = TextEditingController();
+  TextEditingController jobTitlesID = TextEditingController();
+
   final formkey = GlobalKey<FormState>();
   @override
   void onInit() {
-  
     change(null, status: RxStatus.success());
     super.onInit();
   }
-
-  
 
   void onPressedRegisterButton() async {
     formkey!.currentState!.save();
@@ -54,6 +50,7 @@ class UsersAddController extends GetxController with StateMixin {
       APPSnackbar.showMessageSuccess(message: responseModel.data["message"].toString());
 
       change(null, status: RxStatus.success());
+      Get.offAllNamed("/users");
     } on BadRequestException catch (e) {
       APPSnackbar.showMessageFailure(message: e.message.toString());
       change(null, status: RxStatus.success());

@@ -1,3 +1,4 @@
+import 'package:dashbord/app_empty.dart';
 import 'package:dashbord/components/components.base_data_table.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,9 @@ class DepartmentView extends GetView<DepartmentController> {
             },
           );
         },
+        onEmpty: APPEmptyPage(
+          title: "No Department",
+        ),
       ),
     );
   }

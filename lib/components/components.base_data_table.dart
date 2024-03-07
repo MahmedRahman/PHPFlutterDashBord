@@ -16,8 +16,8 @@ class BaseDataTable extends GetView {
   List<String> rowsName;
 
   void Function(dynamic item)? onDeletePressed;
-  void Function()? onUpdatePressed;
-  void Function()? onShowPressed;
+  void Function(dynamic item)? onUpdatePressed;
+  void Function(dynamic item)? onShowPressed;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,13 +52,17 @@ class BaseDataTable extends GetView {
                             GetUtils.isNull(onUpdatePressed)
                                 ? SizedBox()
                                 : IconButton(
-                                    onPressed: onUpdatePressed,
+                                    onPressed: () {
+                                      onUpdatePressed!(data[i]);
+                                    },
                                     icon: Icon(Icons.edit),
                                   ),
                             GetUtils.isNull(onShowPressed)
                                 ? SizedBox()
                                 : IconButton(
-                                    onPressed: onShowPressed,
+                                    onPressed: () {
+                                      onShowPressed!(data[i]);
+                                    },
                                     icon: Icon(Icons.view_agenda),
                                   ),
                           ],

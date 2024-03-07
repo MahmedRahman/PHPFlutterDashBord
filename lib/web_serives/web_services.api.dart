@@ -73,7 +73,7 @@ class WebServices {
     return await ApiManger().execute(
       url: "${API.url}users",
       HTTPRequestMethod: HTTPRequestEnum.GET,
-      isAuth: true,
+      // isAuth: true,
     );
   }
 
@@ -95,6 +95,7 @@ class WebServices {
 
   Future<ResponseModel> updateUser({
     required String userId,
+    required String employee_no,
     String? name,
     String? email,
     String? role,
@@ -109,6 +110,7 @@ class WebServices {
       HTTPRequestMethod: HTTPRequestEnum.PUT,
       isAuth: true,
       query: {
+        "employee_no": employee_no,
         "name": name,
         "is_active": isActive,
         "role": role,
@@ -192,7 +194,31 @@ class WebServices {
   }
 
   Future<ResponseModel> addVacation({
-    required String create_date,
+    required String user_id,
+    required String stating,
+    required String ending,
+    required String days,
+    required String type,
+    required String comments,
+  }) async {
+    return await ApiManger().execute(
+      url: "${API.url}vacation/add",
+      HTTPRequestMethod: HTTPRequestEnum.POST,
+      query: {
+        //"create_date": "2024-03-03",
+        "stating": "${stating}",
+        "ending": "${ending}",
+        "days": days,
+        "user_id": user_id,
+        "type": "${type}", //'annual', 'emergency', 'sick', 'without_pay'
+        "comments": "${comments}"
+      },
+    );
+  }
+
+  Future<ResponseModel> updateVacation({
+    required String vacationId,
+    required String user_id,
     required String stating,
     required String ending,
     required String days,
@@ -201,16 +227,15 @@ class WebServices {
     required String comments,
   }) async {
     return await ApiManger().execute(
-      url: "${API.url}vacation/add",
-      HTTPRequestMethod: HTTPRequestEnum.POST,
+      url: "${API.url}vacation/${vacationId}",
+      HTTPRequestMethod: HTTPRequestEnum.PUT,
       query: {
-        "create_date": "2024-03-03",
-        "stating": "2024-03-10",
-        "ending": "2024-03-17",
-        "days": 7,
-        "type": "annual", //'annual', 'emergency', 'sick', 'without_pay'
-        "state": "wait_for_reply", // 'approval', 'rejection','wait_for_reply'
-        "comments": "Looking forward to this break!"
+        // "stating": "${stating}",
+        // "ending": "${ending}",
+        //"days": days,
+        "type": "${type}", //'annual', 'emergency', 'sick', 'without_pay'
+        "state": "${state}", // 'approval', 'rejection','wait_for_reply'
+        "comments": "${comments}"
       },
     );
   }
@@ -231,11 +256,10 @@ class WebServices {
   }
 
   Future<ResponseModel> addExcuses({
-    required String create_date,
+    required String createDate,
     required String stating,
     required String ending,
-    required String days,
-    required String type,
+    required String user_id,
     required String state,
     required String comments,
   }) async {
@@ -243,12 +267,27 @@ class WebServices {
       url: "${API.url}excuses/add",
       HTTPRequestMethod: HTTPRequestEnum.POST,
       query: {
-        "create_date": "2023-03-15",
-        "stating": "Morning",
-        "ending": "Afternoon",
-        "state": "wait_for_reply",
-        //"user_id": "4", // This is optional since your method defaults to the authenticated user's ID
-        "comments": "Doctor's appointment"
+        "create_date": "${createDate}",
+        "stating": "${stating}",
+        "ending": "${ending}",
+        "state": "${state}",
+        "user_id": "${user_id}", // This is optional since your method defaults to the authenticated user's ID
+        "comments": "${comments}",
+      },
+    );
+  }
+
+  Future<ResponseModel> updateExcuses({
+    required String id,
+    required String state,
+    required String comments,
+  }) async {
+    return await ApiManger().execute(
+      url: "${API.url}excuses/${id}",
+      HTTPRequestMethod: HTTPRequestEnum.PUT,
+      query: {
+        "state": "${state}",
+        "comments": "${comments}",
       },
     );
   }

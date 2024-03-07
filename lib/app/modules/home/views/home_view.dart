@@ -9,14 +9,50 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
+      backgroundColor: Colors.grey.shade300,
+      body: Column(
+        children: [
+          Row(
+            children: [
+              cardItem(),
+            ],
+          ),
+          Row(
+            children: [
+              cardItem(),
+              cardItem(),
+              cardItem(),
+              cardItem(),
+            ],
+          ),
+          Row(
+            children: [
+              cardItem(),
+              cardItem(),
+              cardItem(),
+              cardItem(),
+            ],
+          ),
+          Row(
+            children: [
+              cardItem(),
+              cardItem(),
+            ],
+          )
+        ],
       ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
+    );
+  }
+
+  Expanded cardItem() {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: Card(
+          child: Container(
+            height: 150,
+            color: Colors.white10,
+          ),
         ),
       ),
     );
