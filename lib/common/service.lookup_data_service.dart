@@ -1,5 +1,5 @@
 import 'package:dashbord/web_serives/model/api_response_model.dart';
-import 'package:dashbord/web_serives/web_services.api.dart';
+import 'package:dashbord/web_serives/web_services.dart';
 import 'package:get/get.dart';
 
 class LookupTableService extends GetxService {

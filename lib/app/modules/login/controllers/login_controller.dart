@@ -16,6 +16,10 @@ class LoginController extends GetxController with StateMixin {
 
   @override
   void onInit() {
+    if (Get.find<AuthService>().isLoggedIn == true) {
+      Get.toNamed(Routes.HOME);
+    }
+
     change(null, status: RxStatus.success());
     super.onInit();
   }
@@ -40,11 +44,10 @@ class LoginController extends GetxController with StateMixin {
         change(null, status: RxStatus.success());
         return;
       }
-      Get.find<AuthService>().token = responseModel.data["data"]["access_token"].toString();
-      //print(Get.find<AuthService>().token);
-      final box = GetStorage();
-
-      box.write('token', '${responseModel.data["data"]["access_token"].toString()}');
+      Get.find<AuthService>().saveLoginData(responseModel.data["data"]);
+      // Get.find<AuthService>().token = responseModel.data["data"]["access_token"].toString();
+      // final box = GetStorage();
+      // box.write('token', '${responseModel.data["data"]["access_token"].toString()}');
 
       Get.offAllNamed(Routes.HOME);
       change(null, status: RxStatus.success());

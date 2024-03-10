@@ -62,7 +62,6 @@ class LoginView extends GetView<LoginController> {
                         onChanged: (data) {
                           controller.password.text = data.toString();
                         },
-                        // validator: APPInputValidator.validatePassword,
                       ),
                       SizedBox(
                         height: 20,

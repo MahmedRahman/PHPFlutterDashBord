@@ -27,14 +27,7 @@ class ApiManger extends GetConnect {
     bool isAuth = false,
   }) async {
     if (isAuth) {
-      final box = GetStorage();
-
-      // Check if 'token' key exists in the box
-      if (box.hasData('token')) {
-        Get.find<AuthService>().token = box.read('token');
-      } else {
-        Get.offAndToNamed(Routes.LOGIN);
-      }
+      (Get.find<AuthService>().isLoggedIn == false) ? Get.offAndToNamed(Routes.LOGIN) : "";
     }
 
     log("[${HTTPRequestMethod.name}]  ${url}", name: "http-request");

@@ -174,8 +174,7 @@ class LayoutTemplate extends GetView {
                           leading: Icon(Icons.logout),
                           title: Text("LogOut"),
                           onTap: () {
-                            final box = GetStorage();
-                            box.remove('token');
+                       
 
                             Get.offAllNamed(Routes.LOGIN);
                           },

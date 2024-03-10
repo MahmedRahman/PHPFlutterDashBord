@@ -15,8 +15,7 @@ void main() async {
   Get.put(LookupTableService());
   runApp(
     GetMaterialApp(
-      title: "Application",
-      initialRoute: AppPages.INITIAL,
+      title: "Application", initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       transitionDuration: Duration(),
     ),
